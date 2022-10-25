@@ -1,6 +1,7 @@
 import pymysql
 import os
 from consts.consts import *
+from consts.queries import *
 from db_utils import *
 from consts.consts import *
 
@@ -44,9 +45,24 @@ class DB_Manager:
                 except Exception as e:
                     pass
 
-    def get_tickets_by(category, tags):
+    def get_tickets_by(self, category, tags):
         if category and tags:
-            pass
+            with self.connection.cursor() as cursor:
+                cursor.execute(SELECT_TICKETS_BY_CATEGORY_AND_TAGS)
+                return cursor.fetchall()
+        elif category:
+            with self.connection.cursor() as cursor:
+                cursor.execute(SELECT_TICKETS_BY_CATEGORY)
+                return cursor.fetchall()
+        elif tags:
+            with self.connection.cursor() as cursor:
+                cursor.execute(SELECT_TICKETS_BY_TAGS)
+                return cursor.fetchall()
+        else:
+            with self.connection.cursor() as cursor:
+                cursor.execute(SELECT_ALL_TICKETS)
+                return cursor.fetchall()
+
 
         
     # def get_heaviest_pokemon(self):
