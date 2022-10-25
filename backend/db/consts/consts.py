@@ -11,6 +11,9 @@ WISH_TAG_TABLE = "Wish_tag"
 USER_TICKET_TABLE = "User_ticket"
 USER_WISH_TABLE = "User_wish"
 
+### PATH's ###
+CREATE_TABLES_PATH = ""
+
 HOST = "localhost"
 USER = "root"
 DB_NAME = "ticket_arena"

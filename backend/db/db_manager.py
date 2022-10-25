@@ -1,9 +1,9 @@
 import pymysql
 import os
-from backend.db.consts.consts import DB_NAME, HOST, PWD, USER
-from db.consts.consts import *
-from db.consts.queries import *
-from db.db_utils import *
+from consts.consts import *
+from consts.queries import *
+from db_utils import *
+from consts.consts import *
 
 
 class DB_Manager:
@@ -17,6 +17,18 @@ class DB_Manager:
             cursorclass=pymysql.cursors.DictCursor
         )
 
+    def create_tables(self):
+        with open('backend\db\create_tables_queries.sql', 'r') as f:
+            sqlFile = f.read()
+        sqlCommands = sqlFile.split(';')
+        with self.connection.cursor() as cursor:
+            for command in sqlCommands:
+                try:
+                    cursor.execute(command)
+                except Exception as e:
+                    pass
+
+        
     # def get_heaviest_pokemon(self):
     #     with self.connection.cursor() as cursor:
     #         cursor.execute(SELECT_HEAVIEST_POKEMON)

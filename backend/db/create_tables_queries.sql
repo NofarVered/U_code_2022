@@ -1,10 +1,22 @@
 USE ticket_arena;
 
+
+-- drop table User;
+-- drop table Category;
+-- drop table Ticket;
+-- drop table Transaction;
+-- drop table Wish;
+-- drop table Ticket_tag;
+-- drop table Wish_tag;
+-- drop table User_ticket;
+-- drop table User_wish;
+
+CREATE DATABASE IF NOT EXISTS ticket_arena;
+
 CREATE TABLE IF NOT EXISTS User(
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(30),
-    passward VARCHAR(30),
-    credit_card_id INT,
+    password VARCHAR(30),
     rank INT 
 );
 
@@ -15,7 +27,6 @@ CREATE TABLE IF NOT EXISTS Category(
 
 CREATE TABLE IF NOT EXISTS Ticket(
     ticket_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT REFERENCES User(user_id),
     title VARCHAR(50),
     price INT,
     location VARCHAR(30),
