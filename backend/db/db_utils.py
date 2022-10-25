@@ -1,5 +1,7 @@
 import pymysql
 import sys
+import os
+
 from consts.consts import *
 
 connection = pymysql.connect(
@@ -19,5 +21,3 @@ def create_db(db_name):
             connection.commit()
     except pymysql.Error as e:
         print(e.args[1], file=sys.stderr)
-
-# create_db(DB_NAME)
