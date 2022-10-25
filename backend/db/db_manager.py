@@ -17,10 +17,12 @@ class DB_Manager:
             cursorclass=pymysql.cursors.DictCursor
         )
 
-    # def get_heaviest_pokemon(self):
-    #     with self.connection.cursor() as cursor:
-    #         cursor.execute(SELECT_HEAVIEST_POKEMON)
-    #         return cursor.fetchall()
+    def execute_insert(self,query,data):
+        with connection.cursor() as cursor:
+            cursor.execute(query,data)
+            result = cursor.fetchall()
+            return result
+
 
 
 db_manager = DB_Manager(HOST, USER, PWD, DB_NAME)

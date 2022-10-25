@@ -1,0 +1,1 @@
+categories_data =["music","sport","dance","cinema","theater","festival"]
