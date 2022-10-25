@@ -68,3 +68,7 @@ CREATE TABLE IF NOT EXISTS User_wish(
     user_id INT REFERENCES User(user_id),
     wish_id INT REFERENCES Wish(wish_id)
 );
+
+SELECT *
+FROM Ticket
+ORDER BY date DESC;

@@ -1,7 +1,6 @@
 import pymysql
 import os
 from consts.consts import *
-from consts.queries import *
 from db_utils import *
 from consts.consts import *
 
@@ -27,6 +26,10 @@ class DB_Manager:
                     cursor.execute(command)
                 except Exception as e:
                     pass
+
+    def get_tickets_by(category, tags):
+        if category and tags:
+            pass
 
         
     # def get_heaviest_pokemon(self):

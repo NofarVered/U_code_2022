@@ -1,9 +1,10 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-from ..utils.connect_details import connect_details as cd
-# to do import to DB_Manager
+from ..db.consts.consts import *
+from ..db.db_manager import db_manager
+from ..utils.helpers import *
 
-connector = DB_Manager(cd.host, cd.user, cd.pwd, cd.db)
+# connector = DB_Manager(HOST, USER, PWD, DB_NAME)
 
 router = APIRouter()
 
@@ -13,7 +14,9 @@ router = APIRouter()
 @router.get("/tickets/", status_code=200)
 def get_tickets_by_input(category: str = "", tags: str = ""):
     try:
-        pass
+        tag_list = parse_str_tags_to_list(tags)
+        validate_category(category)
+        tickets = db_manager.get_tickets_by(category, tag_list)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

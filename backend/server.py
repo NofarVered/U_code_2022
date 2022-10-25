@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
-
-
+from routers import tickets_router, users_router
+ 
 app = FastAPI()
 
 # create table call

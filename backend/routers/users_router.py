@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-from ..utils.connect_details import connect_details as cd
-# to do import to DB_Manager
+from ..db.consts.consts import *
+from ..db.db_manager import db_manager
 
-connector = DB_Manager(cd.host, cd.user, cd.pwd, cd.db)
+# connector = DB_Manager(HOST, USER, PWD, DB_NAME)
 
 router = APIRouter()
 
