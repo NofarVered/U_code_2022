@@ -7,6 +7,7 @@
     <title>Arena Tickets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/691b940c32.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -16,21 +17,16 @@
     />
   </head>
 
-  <body>
+  <body >
     <header>
       <div id="logo">LOGO</div>
       <div id="notification-btn">NOTI</div>
     </header>
-    <div id="main-container">
-      <div id="search-container"></div>
-      <div id="tickets-container" class="container">
-        <div class="ticket" ></div>
-        <div class="ticket"></div>
-        <div class="ticket"></div>
-        <div class="ticket"></div>
-        <div class="ticket"></div>
-      </div>
-    </div>
+
+    <div id="search-container"></div>
+
+    <div id="tickets-container" class="container"></div>
+
     <nav>
       <div class="nav-btn">contact us</div>
       <div class="nav-btn">sell</div>
@@ -38,9 +34,21 @@
       <div class="nav-btn">profile</div>
     </nav>
 
+    <!-- ================================== TEMPLATES SCRIPTS ================================== -->
+
     <script id="ticket-template" type="text/x-handlebars-template">
       {{#each tickets}}
-        <div class="ticket-container"></div>
+      <div class="card ticket-body" style="margin-bottom: 10px;">
+        <div class="card-header ticket-tags">
+          {{tags}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title ticket-title">{{title}}</h5>
+          <label class="ticket-place" style="margin-bottom: 2px;"><i class="fa-solid fa-location-crosshairs"></i> {{place}} </label>
+          <label class="ticket-sites"><i class="fa-solid fa-couch"></i> {{sites}} </label>
+          <div style="display: flex; justify-content: flex-end;"><button class="btn btn-warning ticket-price"> BUY {{price}} $</button></div>
+        </div>
+      </div>
       {{/each}}
     </script>
 
