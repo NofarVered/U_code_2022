@@ -17,10 +17,21 @@ class DB_Manager:
         )
 
     def execute_insert(self,query,data):
-        with connection.cursor() as cursor:
-            cursor.execute(query,data)
-            result = cursor.fetchall()
-            return result
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(query,data)
+                connection.commit()
+        except Exception as e:
+            print(e)
+
+    def execute_select(self,query):
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                result = cursor.fetchall()
+                return result
+        except Exception as e:
+            print(e)
 
     def create_tables(self):
         with open('backend\db\create_tables_queries.sql', 'r') as f:
