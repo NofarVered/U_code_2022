@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="logo">LOGO</div>
+      <div id="notification-btn">NOTI</div>
+    </header>
+    <div id="main-container">
+      <div id="search-container"></div>
+      <div id="tickets-container" class="container">
+        <div class="ticket" ></div>
+        <div class="ticket"></div>
+        <div class="ticket"></div>
+        <div class="ticket"></div>
+        <div class="ticket"></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-btn">contact us</div>
+      <div class="nav-btn">sell</div>
+      <div class="nav-btn">find</div>
+      <div class="nav-btn">profile</div>
+    </nav>
+    <script id="ticket-template" type="text/x-handlebars-template">
+      {{#each tickets}}
+        <div class="ticket-container"></div>
+      {{/each}}
+    </script>
+    <script src="./app.js"></script>
+  </body>
+</html>
