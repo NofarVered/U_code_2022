@@ -1,9 +1,7 @@
 import pymysql
-import os
-from consts.consts import *
-from consts.queries import *
-from db_utils import *
-from consts.consts import *
+from .consts import *
+from ..queries.insert_queries import *
+from ..queries.select_queries import *
 
 
 class DB_Manager:
@@ -17,33 +15,34 @@ class DB_Manager:
             cursorclass=pymysql.cursors.DictCursor
         )
 
-    def execute_insert(self,query,data):
+    def execute_insert(self, query, params):
         try:
-            with connection.cursor() as cursor:
-                cursor.execute(query,data)
-                connection.commit()
+            with self.connection.cursor() as cursor:
+                cursor.execute(query, params)
+                self.connection.commit()
         except Exception as e:
             print(e)
 
-    def execute_select(self,query):
+# to add params
+    def execute_select(self, query):
         try:
-            with connection.cursor() as cursor:
+            with self.connection.cursor() as cursor:
                 cursor.execute(query)
                 result = cursor.fetchall()
                 return result
         except Exception as e:
             print(e)
 
-    def create_tables(self):
-        with open('backend\db\create_tables_queries.sql', 'r') as f:
-            sqlFile = f.read()
-        sqlCommands = sqlFile.split(';')
-        with self.connection.cursor() as cursor:
-            for command in sqlCommands:
-                try:
-                    cursor.execute(command)
-                except Exception as e:
-                    pass
+    # def create_tables(self):
+    #     with open('backend\db\create_tables_queries.sql', 'r') as f:
+    #         sqlFile = f.read()
+    #     sqlCommands = sqlFile.split(';')
+    #     with self.connection.cursor() as cursor:
+    #         for command in sqlCommands:
+    #             try:
+    #                 cursor.execute(command)
+    #             except Exception as e:
+    #                 pass
 
     def get_tickets_by(self, category, tags):
         if category and tags:
@@ -62,13 +61,6 @@ class DB_Manager:
             with self.connection.cursor() as cursor:
                 cursor.execute(SELECT_ALL_TICKETS)
                 return cursor.fetchall()
-
-
-        
-    # def get_heaviest_pokemon(self):
-    #     with self.connection.cursor() as cursor:
-    #         cursor.execute(SELECT_HEAVIEST_POKEMON)
-    #         return cursor.fetchall()
 
 
 db_manager = DB_Manager(HOST, USER, PWD, DB_NAME)

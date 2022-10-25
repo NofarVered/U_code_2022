@@ -1,11 +1,13 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-from ..db.consts.consts import *
-from ..db.db_manager import db_manager
+# from ..db.consts.consts import *
+from ..db.services.db_manager import db_manager
 
 router = APIRouter()
 
 # get notifications for user.
+
+
 @router.get("/users/notifications", status_code=200)
 def get_notification_for_user():
     try:

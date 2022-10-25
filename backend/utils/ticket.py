@@ -1,5 +1,5 @@
-class Ticket:
 
+class Ticket:
     def __init__(self, ticket_object) -> None:
         self.ticket_id = ticket_object["ticket_id"]
         self.title = ticket_object["title"]

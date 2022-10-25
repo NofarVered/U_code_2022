@@ -1,6 +1,4 @@
-
 ### GENERAL CONTSTANTS ###
-
 TICKET_TABLE = "Ticket"
 USER_TABLE = "User"
 TRANSACTION_TABLE = "Transaction"

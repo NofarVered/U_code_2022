@@ -1,6 +1,3 @@
-USE ticket_arena;
-
-
 -- drop table User;
 -- drop table Category;
 -- drop table Ticket;
@@ -12,6 +9,7 @@ USE ticket_arena;
 -- drop table User_wish;
 
 CREATE DATABASE IF NOT EXISTS ticket_arena;
+USE ticket_arena;
 
 CREATE TABLE IF NOT EXISTS User(
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -69,6 +67,6 @@ CREATE TABLE IF NOT EXISTS User_wish(
     wish_id INT REFERENCES Wish(wish_id)
 );
 
-SELECT *
-FROM Ticket
-ORDER BY date DESC;
+-- SELECT *
+-- FROM Ticket
+-- ORDER BY date DESC;

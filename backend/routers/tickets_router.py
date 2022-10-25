@@ -1,14 +1,16 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-from ..db.consts.consts import *
-from ..db.db_manager import db_manager
-from ..utils.helpers import *
+# from ..db.load_dat
+# from
+from ..utils.helper_server_model import *
 from ..utils.ticket import Ticket
 
 router = APIRouter()
 
 # get tickets by user's input - category and tags.
 # we will return all the tickets by the parameters above.
+
+
 @router.get("/tickets/", status_code=200)
 def get_tickets_by_input(category: str = "", tags: str = ""):
     try:

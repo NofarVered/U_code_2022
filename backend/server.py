@@ -1,25 +1,24 @@
 from fastapi import FastAPI
 import uvicorn
+from fastapi.staticfiles import StaticFiles
 from routers import tickets_router, users_router
-from db import load_data
-from db.db_manager import db_manager
+from db.services.db_manager import db_manager
+from db.load_data import load_all_data
 
-load_data.load_all_data(db_manager)
- 
 app = FastAPI()
 
-
-# create table call
-# load data call
+# load_all_data(db_manager)
 
 app.include_router(tickets_router.router)
 app.include_router(users_router.router)
 
 
-@app.get("/")
+@app.get("/sanity")
 def root():
-    return "server is up and running"
+    return {"message": "Server is running"}
 
+
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", host="localhost", port=8000, reload=True)
+    uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=True)
