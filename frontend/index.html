@@ -43,9 +43,10 @@
         </ul>
       </div>
 
+      <!-- filter -->
       <div class="btn-group" style="margin-top: 5px;">
         <button class="btn bg-yellow dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 175px;">
-          Filter
+          <i class="fa-solid fa-filter"></i>Filter
         </button>
         <ul class="dropdown-menu" style="padding: 10px;">
           <div class="form-check">
@@ -64,17 +65,19 @@
             <label>Price</label>
             <input type="range" class="form-range" id="customRange1" style="width: 100px; ">
           </div>
-          
         </ul>
+
       </div>
 
+      <!-- input and search button-->
       <div class="input-group mb-3" style="margin-top: 5px;">
         <input type="text" class="form-control" placeholder="Enter your search words" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
 
     </div>
 
+  <!-- Container tickets render here-->
     <div id="tickets-container" class="container"></div>
     
   <!-- Bottom Navbar -->
@@ -117,7 +120,7 @@
         <div class="card-body">
           <h5 class="card-title ticket-title">{{title}}</h5>
           <p class="ticket-place" style="margin-bottom: 2px;"><i class="fa-solid fa-location-crosshairs"></i> {{location}} </p>
-          <p class="ticket-sites"><i class="fa-solid fa-couch"></i> {row} {seat} </p>
+          <p class="ticket-sites"><i class="fa-solid fa-couch"></i> {{place}} </p>
           <div style="display: flex; justify-content: flex-end;"><button class="btn btn-warning ticket-price"> BUY {{price}} $</button></div>
         </div>
       </div>
