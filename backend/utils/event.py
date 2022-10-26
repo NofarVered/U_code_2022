@@ -6,4 +6,5 @@ class Event:
         self.location = event_object["location"]
         self.event_img = event_object["event_img"]
         self.category_id = event_object["category_id"]
+        self.tags = event_object["tags"]
         self.date = event_object["date"]

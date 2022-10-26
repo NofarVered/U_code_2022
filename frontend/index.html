@@ -41,7 +41,7 @@
           aria-controls="navbarSupportedContent"
           class="navbar-toggler"
         >
-          <i class="fa-regular fa-bell"  data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="tada"></i>
+          <i class="fa-regular fa-bell animated bounce"  data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="tada"></i>
         </button>
       </div>
     </header>
@@ -135,7 +135,7 @@
     </div>
 
     <!-- Container tickets render here-->
-    <div id="tickets-container" class="container"></div>
+    <div id="events-container" class="container"></div>
 
     <!-- Bottom Navbar -->
     <nav
@@ -167,28 +167,43 @@
     <div id="demo-modal" class="modal"></div>
 
     <!-- ================================== TEMPLATES SCRIPTS ================================== -->
-
-    <script id="ticket-template" type="text/x-handlebars-template">
-      {{#each tickets}}
+    <script id="event-template" type="text/x-handlebars-template">
+      {{#each events}}
         <div
-          class="card ticket-body"
-          id="{{ticket_id}}"
+          class="card event-body animated slideInDown"
+          id="{{event_id}}"
           style="margin-bottom: 10px;"
         >
-          <div class="card-header ticket-tags">
+          <div class="card-header event-tags">
             {{#each tags}}
-              <label class="ticket-tag">#{{word}}</label>
+              <label class="event-tag">#{{word}}</label>
             {{/each}}
           </div>
           <div class="card-body">
-            <h5 class="card-title ticket-title">{{title}}</h5>
-            <p class="ticket-place" style="margin-bottom: 2px;"><i
+            <h5 class="card-title event-title">{{title}}</h5>
+            <p class="event-place" style="margin-bottom: 2px;"><i
                 class="fa-solid fa-location-crosshairs"
               ></i>
               {{location}}
             </p>
+            <p class="event-sites"><i class="fa-solid fa-couch"></i>
+              {{date}}
+            </p>
+          </div>
+        </div>
+      {{/each}}
+    </script>
+    <script id="ticket-template" type="text/x-handlebars-template">
+      {{#each tickets}}
+        <div
+          class="card ticket-body animated slideInDown"
+          id="{{ticket_id}}"
+          style="margin-bottom: 10px;"
+        >
+          <div class="card-body">
+            <h5 class="card-title ticket-title">{{title}}</h5>
             <p class="ticket-sites"><i class="fa-solid fa-couch"></i>
-              {{place}}
+              {{seat}}
             </p>
             <div style="display: flex; justify-content: flex-end;"><button
                 class="btn bg-yellow ticket-price"
@@ -211,8 +226,9 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <script src="./services/eventsApi.js"></script>
     <script src="./services/ticketsApi.js"></script>
-    <script src="./models/ticketsModel.js"></script>
+    <script src="./models/model.js"></script>
     <script src="./view/Renderer.js"></script>
     <script src="./app.js"></script>
   </body>
