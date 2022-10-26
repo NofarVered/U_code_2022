@@ -6,19 +6,30 @@ async function renderTickets() {
     await ticketsClass.loadTickets();
     renderer.render(ticketsClass.getTickets());
   } catch (e) {
-    raise(e);
+    console.log(e);
   }
 }
 
 renderTickets();
 
-async function openNotificationHandler(){
+async function openNotificationHandler() {
   try {
-    renderer.renderModal("We found some tickets for you..","tickets, tickets,tickets")
+    renderer.renderModal(
+      "We found some tickets for you..",
+      "tickets, tickets,tickets"
+    );
   } catch (e) {
-    console.log(e)
-}
+    console.log(e);
+  }
 }
 
-$("#notification-btn").on("click",openNotificationHandler );
+async function getEventsByUser() {
+  let category = $("#select-form option:selected").text();
+  let textInput = $("#input-search").val();
+  let tagsArray = textInput.split(" ");
+  // for (tag of tagsArray) console.log(tag);
+}
+
+$("#btn-search").on("click", getEventsByUser);
+$("#notification-btn").on("click", openNotificationHandler);
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);

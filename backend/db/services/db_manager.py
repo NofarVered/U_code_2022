@@ -43,17 +43,17 @@ class DB_Manager:
                     cursor.execute(command)
                 except Exception as e:
                     pass
-    
+
     def get_tickets_by_event(self, event_id):
-        return self.execute_select(SELECT_TICKET_BY_EVENT.format(event_id = event_id))
+        return self.execute_select(SELECT_TICKET_BY_EVENT.format(event_id=event_id))
 
     def get_events_by(self, category, tags):
         if category and tags:
-            return self.execute_select(SELECT_EVENTS_BY_CATEGORY_AND_TAGS)
+            return self.execute_select(SELECT_EVENTS_BY_CATEGORY_AND_TAG)
         elif category:
             return self.execute_select(SELECT_EVENTS_BY_CATEGORY.format(category_name=category))
         elif tags:
-            return self.execute_select(SELECT_EVENTS_BY_TAGS)
+            return self.execute_select(SELECT_EVENTS_BY_TAG)
         else:
             return self.execute_select(SELECT_ALL_EVENTS)
 

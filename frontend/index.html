@@ -48,34 +48,19 @@
 
     <div id="search-container" class="container">
       <div id="dropdown-container">
-        <div class="btn-group" style="margin-top: 5px;width:49%">
-          <button
-            class="btn bg-yellow dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            
-          >
-            Category
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item music-category" href="#">music</a></li>
-            <li><a class="dropdown-item sport-category" href="#">sport</a></li>
-            <li><a class="dropdown-item dance-category" href="#">dance</a></li>
-            <li>
-              <a class="dropdown-item cinema-category" href="#">cinema</a>
-            </li>
-            <li>
-              <a class="dropdown-item theater-category" href="#">theater</a>
-            </li>
-            <li>
-              <a class="dropdown-item festival-category" href="#">festival</a>
-            </li>
-          </ul>
-        </div>
+
+        <select class="form-select" aria-label="Default select example" id="select-form" style="margin-right: 5px;">
+          <option selected>Select Category</option>
+          <option value="1" id="music-category">music</option>
+          <option value="2" id="sport-category">sport</option>
+          <option value="3" id="dance-category">dance</option>
+          <option value="4" id="cinema-category">cinema</option>
+          <option value="5" id="theater-category">theater</option>
+          <option value="6" id="festival-category">festival</option>
+        </select>
 
         <!-- filter -->
-            <div class="btn-group" style="margin-top: 5px;width: 49%">
+        <div class="btn-group" >
           <button
             id="filter-btn"
             class="btn bg-yellow dropdown-toggle"
@@ -137,11 +122,12 @@
           placeholder="Enter your search words"
           aria-label="Recipient's username"
           aria-describedby="button-addon2"
+          id="input-search"
         />
         <button
           class="btn btn-outline-secondary"
           type="button"
-          id="button-addon2"
+          id="btn-search"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>

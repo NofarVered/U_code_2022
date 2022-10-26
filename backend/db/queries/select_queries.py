@@ -17,7 +17,7 @@ SELECT_EVENTS_BY_TAG = "SELECT *\
                                             WHERE word = '{word}')\
                         ORDER BY date DESC;"
 
-SELECT_EVENTS_BY_CATEGORY_AND_TAGS = "SELECT *\
+SELECT_EVENTS_BY_CATEGORY_AND_TAG = "SELECT *\
                                     FROM Event\
                                     WHERE event_id = (SELECT event_id\
                                                     FROM event_tag\
