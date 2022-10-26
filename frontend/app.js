@@ -11,7 +11,6 @@ async function renderTickets() {
 }
 
 renderTickets();
-<<<<<<< HEAD
 
 async function openNotificationHandler(){
   try {
@@ -23,5 +22,3 @@ async function openNotificationHandler(){
 
 $("#notification-btn").on("click",openNotificationHandler );
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);
-=======
->>>>>>> 2981ac527121ca6573eb01128a2cae9dc8350224
