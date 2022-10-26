@@ -1,15 +1,12 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-# from ..db.load_dat
-# from
-from ..utils.helper_server_model import *
-from ..utils.ticket import Ticket
+from utils import *
+from db import db_manager
 
 router = APIRouter()
 
 # get tickets by user's input - category and tags.
 # we will return all the tickets by the parameters above.
-
 
 @router.get("/tickets/", status_code=200)
 def get_tickets_by_input(category: str = "", tags: str = ""):
@@ -17,7 +14,8 @@ def get_tickets_by_input(category: str = "", tags: str = ""):
         tag_list = parse_str_tags_to_list(tags)
         validate_category(category)
         raw_tickets = db_manager.get_tickets_by(category, tag_list)
-        return {"tickets": [Ticket(ticket) for ticket in raw_tickets]}
+        tickets = {"tickets": [Ticket(ticket) for ticket in raw_tickets]}
+        return tickets
 
     except Exception as e:
         raise HTTPException(

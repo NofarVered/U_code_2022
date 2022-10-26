@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-# from ..db.consts.consts import *
-from ..db.services.db_manager import db_manager
+from db import db_manager
 
 router = APIRouter()
 

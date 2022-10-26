@@ -33,34 +33,26 @@ class DB_Manager:
         except Exception as e:
             print(e)
 
-    # def create_tables(self):
-    #     with open('backend\db\create_tables_queries.sql', 'r') as f:
-    #         sqlFile = f.read()
-    #     sqlCommands = sqlFile.split(';')
-    #     with self.connection.cursor() as cursor:
-    #         for command in sqlCommands:
-    #             try:
-    #                 cursor.execute(command)
-    #             except Exception as e:
-    #                 pass
+    def create_tables(self):
+        with open('backend\db\create_tables_queries.sql', 'r') as f:
+            sqlFile = f.read()
+        sqlCommands = sqlFile.split(';')
+        with self.connection.cursor() as cursor:
+            for command in sqlCommands:
+                try:
+                    cursor.execute(command)
+                except Exception as e:
+                    pass
 
     def get_tickets_by(self, category, tags):
         if category and tags:
-            with self.connection.cursor() as cursor:
-                cursor.execute(SELECT_TICKETS_BY_CATEGORY_AND_TAGS)
-                return cursor.fetchall()
+            return self.execute_select(SELECT_TICKETS_BY_CATEGORY_AND_TAGS)
         elif category:
-            with self.connection.cursor() as cursor:
-                cursor.execute(SELECT_TICKETS_BY_CATEGORY)
-                return cursor.fetchall()
+            return self.execute_select(SELECT_TICKETS_BY_CATEGORY.format(category_name=category))
         elif tags:
-            with self.connection.cursor() as cursor:
-                cursor.execute(SELECT_TICKETS_BY_TAGS)
-                return cursor.fetchall()
+            return self.execute_select(SELECT_TICKETS_BY_TAGS)
         else:
-            with self.connection.cursor() as cursor:
-                cursor.execute(SELECT_ALL_TICKETS)
-                return cursor.fetchall()
+            return self.execute_select(SELECT_ALL_TICKETS)
 
 
 db_manager = DB_Manager(HOST, USER, PWD, DB_NAME)
