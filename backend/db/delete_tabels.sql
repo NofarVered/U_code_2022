@@ -1,3 +1,5 @@
+USE ticket_arena;
+
 drop table User;
 drop table Category;
 drop table Ticket;

@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arena Tickets</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/691b940c32.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/691b940c32.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -17,113 +26,189 @@
     />
   </head>
 
-  <body >
+  <body>
     <header class="navbar navbar-expand-lg navbar-dark shadow-sm">
       <div class="container">
         <a href="#" class="navbar-brand">
-          <span class="font-weight-bold" style="font-size: 30px;">T <i class="fa-solid fa-cat"></i> ch</span>
+          <span class="font-weight-bold" style="font-size: 30px"
+            >T <i class="fa-solid fa-cat"></i> ch</span
+          >
         </a>
-        <button id="notification-btn"type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" class="navbar-toggler"><i class="fa-regular fa-bell"></i></button>
+        <button
+          id="notification-btn"
+          type="button"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          class="navbar-toggler"
+        >
+          <i class="fa-regular fa-bell"  data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="tada"></i>
+        </button>
       </div>
     </header>
 
     <div id="search-container" class="container">
+      <div id="dropdown-container">
+        <div class="btn-group" style="margin-top: 5px;width:49%">
+          <button
+            class="btn bg-yellow dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            
+          >
+            Category
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item music-category" href="#">music</a></li>
+            <li><a class="dropdown-item sport-category" href="#">sport</a></li>
+            <li><a class="dropdown-item dance-category" href="#">dance</a></li>
+            <li>
+              <a class="dropdown-item cinema-category" href="#">cinema</a>
+            </li>
+            <li>
+              <a class="dropdown-item theater-category" href="#">theater</a>
+            </li>
+            <li>
+              <a class="dropdown-item festival-category" href="#">festival</a>
+            </li>
+          </ul>
+        </div>
 
-      <div class="btn-group " style="margin-top: 5px;">
-        <button class="btn bg-yellow dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 120px;">
-          Category
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item music-category" href="#">music</a></li>
-          <li><a class="dropdown-item sport-category" href="#">sport</a></li>
-          <li><a class="dropdown-item dance-category" href="#">dance</a></li>
-          <li><a class="dropdown-item cinema-category" href="#">cinema</a></li>
-          <li><a class="dropdown-item theater-category" href="#">theater</a></li>
-          <li><a class="dropdown-item festival-category" href="#">festival</a></li>
-        </ul>
-      </div>
-
-      <!-- filter -->
-      <div class="btn-group" style="margin-top: 5px;">
-        <button class="btn bg-yellow dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 175px;">
-          <i class="fa-solid fa-filter"></i>Filter
-        </button>
-        <ul class="dropdown-menu" style="padding: 10px;">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Verifed seller
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Marked sites
-            </label>
-          </div>
-          <div class="price-range-bar" style="display:flex; align-items:center; justify-content: space-between;">
-            <label>Price</label>
-            <input type="range" class="form-range" id="customRange1" style="width: 100px; ">
-          </div>
-        </ul>
-
+        <!-- filter -->
+            <div class="btn-group" style="margin-top: 5px;width: 49%">
+          <button
+            id="filter-btn"
+            class="btn bg-yellow dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-filter"></i> Filter
+          </button>
+          <ul class="dropdown-menu" style="padding: 10px">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Verifed seller
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                checked
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Marked sites
+              </label>
+            </div>
+            <div
+              class="price-range-bar"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <label>Price</label>
+              <input
+                type="range"
+                class="form-range"
+                id="customRange1"
+                style="width: 100px"
+              />
+            </div>
+          </ul>
+        </div>
       </div>
 
       <!-- input and search button-->
-      <div class="input-group mb-3" style="margin-top: 5px;">
-        <input type="text" class="form-control" placeholder="Enter your search words" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div class="input-group mb-3" style="margin-top: 5px">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your search words"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-
     </div>
 
-  <!-- Container tickets render here-->
+    <!-- Container tickets render here-->
     <div id="tickets-container" class="container"></div>
-    
-  <!-- Bottom Navbar -->
-  <nav class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none">
-    <ul class="navbar-nav nav-justified w-100">
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-phone"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-user"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-circle-plus"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-house"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <div id="demo-modal" class="modal"></div>
+
+    <!-- Bottom Navbar -->
+    <nav
+      class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none"
+    >
+      <ul class="navbar-nav nav-justified w-100">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-circle-plus"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div id="demo-modal" class="modal"></div>
 
     <!-- ================================== TEMPLATES SCRIPTS ================================== -->
 
     <script id="ticket-template" type="text/x-handlebars-template">
       {{#each tickets}}
-      <div class="card ticket-body" id="{{ticket_id}}"style="margin-bottom: 10px;">
-        <div class="card-header ticket-tags">
-          {{#each tags}}
-          <label class="ticket-tag">#{{word}}</label>
-          {{/each}}
+        <div
+          class="card ticket-body"
+          id="{{ticket_id}}"
+          style="margin-bottom: 10px;"
+        >
+          <div class="card-header ticket-tags">
+            {{#each tags}}
+              <label class="ticket-tag">#{{word}}</label>
+            {{/each}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title ticket-title">{{title}}</h5>
+            <p class="ticket-place" style="margin-bottom: 2px;"><i
+                class="fa-solid fa-location-crosshairs"
+              ></i>
+              {{location}}
+            </p>
+            <p class="ticket-sites"><i class="fa-solid fa-couch"></i>
+              {{place}}
+            </p>
+            <div style="display: flex; justify-content: flex-end;"><button
+                class="btn bg-yellow ticket-price"
+              > BUY {{price}} $</button></div>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title ticket-title">{{title}}</h5>
-          <p class="ticket-place" style="margin-bottom: 2px;"><i class="fa-solid fa-location-crosshairs"></i> {{location}} </p>
-          <p class="ticket-sites"><i class="fa-solid fa-couch"></i> {{place}} </p>
-          <div style="display: flex; justify-content: flex-end;"><button class="btn btn-warning ticket-price"> BUY {{price}} $</button></div>
-        </div>
-      </div>
       {{/each}}
     </script>
     <script id="modal-template" type="text/x-handlebars-template">
@@ -135,8 +220,11 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
     <script src="./services/ticketsApi.js"></script>
     <script src="./models/ticketsModel.js"></script>
     <script src="./view/Renderer.js"></script>

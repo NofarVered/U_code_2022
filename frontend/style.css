@@ -9,6 +9,10 @@ body {
   background-color: rgb(160, 166, 247);
 }
 
+button{
+  color:white;
+}
+
 .container {
   margin: 10px 0;
 }
@@ -25,7 +29,7 @@ code {
 }
 
 header {
-  background-color: rgb(160, 162, 247);
+  background-color: rgb(129, 131, 235);
 }
 
 #main-container {
@@ -35,6 +39,12 @@ header {
 
 #search-container {
 
+}
+
+#dropdown-container{
+  display: flex;
+  justify-content: space-evenly;
+  width:100%;
 }
 
 #tickets-container {
@@ -55,6 +65,10 @@ nav {
 
 .nav-item i{
   color: rgb(160, 162, 247);
+}
+
+#filter-btn{
+  width:100%;
 }
 
 /*********** modal *************/
