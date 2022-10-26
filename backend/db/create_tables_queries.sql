@@ -67,9 +67,11 @@ USE ticket_arena;
 --     wish_id INT REFERENCES Wish(wish_id)
 -- );
 
-SELECT *
-FROM Ticket
-WHERE category_id = (SELECT category_id
-                    FROM Category
-                    WHERE name = "sport")
-ORDER BY date DESC;
+-- SELECT *
+-- FROM ( SELECT *  
+--     FROM Ticket
+--         WHERE category_id = (SELECT category_id
+--                     FROM Category
+--                     WHERE name = "sport")) as t
+
+

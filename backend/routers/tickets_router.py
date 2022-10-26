@@ -14,7 +14,8 @@ def get_tickets_by_input(category: str = "", tags: str = ""):
         tag_list = parse_str_tags_to_list(tags)
         validate_category(category)
         raw_tickets = db_manager.get_tickets_by(category, tag_list)
-        return {"tickets": [Ticket(ticket) for ticket in raw_tickets]}
+        tickets = {"tickets": [Ticket(ticket) for ticket in raw_tickets]}
+        return tickets
 
     except Exception as e:
         raise HTTPException(

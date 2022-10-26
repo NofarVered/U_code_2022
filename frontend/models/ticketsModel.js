@@ -12,6 +12,6 @@ class TicketsModel {
   async loadTickets() {
     const data = await fetchTickets();
     this.cleanTickets();
-    this.#tickets = data;
+    this.#tickets = data["tickets"];
   }
 }
