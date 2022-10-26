@@ -1,5 +1,5 @@
 const renderer = new Renderer();
-const ticketsClass = new TicketsModel();
+const ticketsClass = new Model();
 
 async function renderTickets() {
   try {
@@ -12,13 +12,13 @@ async function renderTickets() {
 
 renderTickets();
 
-async function openNotificationHandler(){
+async function openNotificationHandler() {
   try {
-    renderer.renderModal("We found some tickets for you..","tickets, tickets,tickets")
+    renderer.renderModal("We found some tickets for you..", "tickets, tickets,tickets")
   } catch (e) {
     console.log(e)
-}
+  }
 }
 
-$("#notification-btn").on("click",openNotificationHandler );
+$("#notification-btn").on("click", openNotificationHandler);
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);
