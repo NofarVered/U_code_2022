@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS User(
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(30),
     password VARCHAR(30),
-    rank INT 
+    rank INT
 );
 
 CREATE TABLE IF NOT EXISTS Category(
@@ -13,14 +13,22 @@ CREATE TABLE IF NOT EXISTS Category(
     name VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS Ticket(
-    ticket_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Event(
+    event_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(50),
-    price INT,
     location VARCHAR(30),
-    ticket_img VARCHAR(50),
+    event_img VARCHAR(50),
     category_id INT REFERENCES Category(category_id),
     date Date NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS Ticket(
+    ticket_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT REFERENCES User(user_id),
+    price INT,
+    ticket_img VARCHAR(50),
+    event_id INT REFERENCES Event(event_id),
+    seat VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS Transaction(
@@ -37,8 +45,8 @@ CREATE TABLE IF NOT EXISTS Wish(
     date Date 
 );
 
-CREATE TABLE IF NOT EXISTS Ticket_tag(
-    ticket_id INT REFERENCES Ticket(ticket_id),
+CREATE TABLE IF NOT EXISTS Event_tag(
+    event_id INT REFERENCES Event(event_id),
     word VARCHAR(20) 
 );
 
@@ -47,21 +55,9 @@ CREATE TABLE IF NOT EXISTS Wish_tag(
     word VARCHAR(20) 
 );
 
-CREATE TABLE IF NOT EXISTS User_ticket(
-    user_id INT REFERENCES User(user_id),
-    ticket_id INT REFERENCES Ticket(ticket_id)
-);
-
 CREATE TABLE IF NOT EXISTS User_wish(
     user_id INT REFERENCES User(user_id),
     wish_id INT REFERENCES Wish(wish_id)
 );
-
-SELECT *
-FROM ( SELECT *  
-    FROM Ticket
-        WHERE category_id = (SELECT category_id
-                    FROM Category
-                    WHERE name = "sport")) as t
 
 
