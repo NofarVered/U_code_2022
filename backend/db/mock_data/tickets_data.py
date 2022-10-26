@@ -1,11 +1,13 @@
-import datetime
-
 tickets_data = [
-    {"title": "Coldplay in Hyarkon","price": 255,"location": "Hayarkon park","ticket_img":"shorturl.at/bcDK1","category_id":1,"date": datetime.datetime(2023, 5, 18)},
-    {"title": "Bon jovi","price": 300,"location": "Central park","ticket_img":"shorturl.at/bcDK1","category_id":1,"date": datetime.datetime(2023, 5, 17)},
-    {"title": "Derbi Macabi tel-aviv Hapoel","price": 100,"location": "Tedi","ticket_img":"shorturl.at/bcDK1","category_id":2,"date": datetime.datetime(2023, 5, 16)},
-    {"title": "madrid vs barcelona","price": 255,"location": "Hayarkon park","ticket_img":"shorturl.at/bcDK1","category_id":2,"date": datetime.datetime(2023, 5, 17)},
-    {"title": "teniss","price": 255,"location": "Hayarkon park","ticket_img":"shorturl.at/bcDK1","category_id":2,"date": datetime.datetime(2023, 5, 17)},
-    {"title": "batsheva The hole","price": 150,"location": "suzzan dallal","ticket_img":"shorturl.at/bcDK1","category_id":3,"date": datetime.datetime(2023, 5, 17)},
-    {"title": "Sol-georget","price": 100,"location": "House of dance","ticket_img":"shorturl.at/bcDK1","category_id":3,"date": datetime.datetime(2023, 5, 17)},
+    {"price": 255,"user_id":1, "ticket_img":"shorturl.at/bcDK1","event_id":1,"seat": "Section A row 10"},
+    {"price": 300,"user_id":2,"ticket_img":"shorturl.at/bcDK1","event_id":1,"seat": ""},
+    {"price": 100,"user_id":3,"ticket_img":"shorturl.at/bcDK1","event_id":2,"seat": "golden ring"},
+    {"price": 255,"user_id":1,"ticket_img":"shorturl.at/bcDK1","event_id":2,"seat": "Row 13 chair 12"},
+    {"price": 125,"user_id":2,"ticket_img":"shorturl.at/bcDK1","event_id":2,"seat": "Stand"},
+    {"price": 150,"user_id":3,"ticket_img":"shorturl.at/bcDK1","event_id":3,"seat": "Section 3 row 10"},
+    {"price": 590,"user_id":1,"ticket_img":"shorturl.at/bcDK1","event_id":3,"seat": "Free"},
+    {"price": 150,"user_id":2,"ticket_img":"shorturl.at/bcDK1","event_id":4,"seat": "Section 1 row 7"},
+    {"price": 100,"user_id":3,"ticket_img":"shorturl.at/bcDK1","event_id":4,"seat": ""},
+    {"price": 150,"user_id":1,"ticket_img":"shorturl.at/bcDK1","event_id":5,"seat": "Front Line"},
+    {"price": 700,"user_id":1,"ticket_img":"shorturl.at/bcDK1","event_id":5,"seat": "VIP"},
     ]

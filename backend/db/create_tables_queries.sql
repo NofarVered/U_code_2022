@@ -8,10 +8,8 @@ USE ticket_arena;
 -- drop table Ticket;
 -- drop table Transaction;
 -- drop table Wish;
--- drop table Event_ticket;
 -- drop table Event_tag;
 -- drop table Wish_tag;
--- drop table User_ticket;
 -- drop table User_wish;
 
 
@@ -38,10 +36,11 @@ CREATE TABLE IF NOT EXISTS Event(
 
 CREATE TABLE IF NOT EXISTS Ticket(
     ticket_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT REFERENCES User(user_id),
     price INT,
     ticket_img VARCHAR(50),
     event_id INT REFERENCES Event(event_id),
-    place VARCHAR(30)
+    seat VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS Transaction(
@@ -58,11 +57,6 @@ CREATE TABLE IF NOT EXISTS Wish(
     date Date 
 );
 
-CREATE TABLE IF NOT EXISTS Event_ticket(
-    event_id INT REFERENCES Event(event_id),
-    ticket_id INT REFERENCES Ticket(ticket_id)
-);
-
 CREATE TABLE IF NOT EXISTS Event_tag(
     event_id INT REFERENCES Event(event_id),
     word VARCHAR(20) 
@@ -71,11 +65,6 @@ CREATE TABLE IF NOT EXISTS Event_tag(
 CREATE TABLE IF NOT EXISTS Wish_tag(
     wish_id INT REFERENCES Wish(wish_id),
     word VARCHAR(20) 
-);
-
-CREATE TABLE IF NOT EXISTS User_ticket(
-    user_id INT REFERENCES User(user_id),
-    ticket_id INT REFERENCES Ticket(ticket_id)
 );
 
 CREATE TABLE IF NOT EXISTS User_wish(
