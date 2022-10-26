@@ -6,6 +6,23 @@ class Renderer{
         container.append(newTicketsEl);
       }
 
+      renderModal(title, content) {
+        const container = $("#demo-modal");
+        container.css("display", "flex");
+        let newModalEl = this.createTemplateEl("modal-template", {
+          title,
+          content,
+        });
+    
+        container.append(newModalEl);
+      }
+    
+      removeModal() {
+        const container = $("#demo-modal");
+        container.css("display", "none");
+        container.empty();
+      }
+
       createTemplateEl(id, data) {
         let source = $(`#${id}`).html();
         let template = Handlebars.compile(source);

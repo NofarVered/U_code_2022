@@ -12,3 +12,13 @@ async function renderTickets() {
 
 renderTickets();
 
+async function openNotificationHandler(){
+  try {
+    renderer.renderModal("We found some tickets for you..","tickets, tickets,tickets")
+  } catch (e) {
+    console.log(e)
+}
+}
+
+$("#notification-btn").on("click",openNotificationHandler );
+$("#demo-modal").on("click", ".close-btn", renderer.removeModal);
