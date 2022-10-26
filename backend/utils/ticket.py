@@ -8,3 +8,4 @@ class Ticket:
         self.ticket_img = ticket_object["ticket_img"]
         self.category_id = ticket_object["category_id"]
         self.date = ticket_object["date"]
+        self.tags = ticket_object["tags"]

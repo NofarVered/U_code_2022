@@ -103,14 +103,16 @@
 
     <script id="ticket-template" type="text/x-handlebars-template">
       {{#each tickets}}
-      <div class="card ticket-body" style="margin-bottom: 10px;">
+      <div class="card ticket-body" id="{{ticket_id}}"style="margin-bottom: 10px;">
         <div class="card-header ticket-tags">
-          {{tags}}
+          {{#each tags}}
+          <label class="ticket-tag">#{{word}}</label>
+          {{/each}}
         </div>
         <div class="card-body">
           <h5 class="card-title ticket-title">{{title}}</h5>
-          <label class="ticket-place" style="margin-bottom: 2px;"><i class="fa-solid fa-location-crosshairs"></i> {{place}} </label>
-          <label class="ticket-sites"><i class="fa-solid fa-couch"></i> {{sites}} </label>
+          <p class="ticket-place" style="margin-bottom: 2px;"><i class="fa-solid fa-location-crosshairs"></i> {{location}} </p>
+          <p class="ticket-sites"><i class="fa-solid fa-couch"></i> {row} {seat} </p>
           <div style="display: flex; justify-content: flex-end;"><button class="btn btn-warning ticket-price"> BUY {{price}} $</button></div>
         </div>
       </div>

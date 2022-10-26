@@ -9,3 +9,4 @@ SELECT_TICKETS_BY_CATEGORY = "SELECT *\
                             ORDER BY date DESC;"
 SELECT_TICKETS_BY_TAGS = ""
 SELECT_TICKETS_BY_CATEGORY_AND_TAGS = ""
+SELECT_TAGS_BY_TICKET_ID = "SELECT word FROM Ticket AS t,Ticket_tag AS tg WHERE t.ticket_id = tg.ticket_id AND tg.ticket_id='{id}'"
