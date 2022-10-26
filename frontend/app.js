@@ -6,19 +6,31 @@ async function renderTickets() {
     await ticketsClass.loadTickets();
     renderer.render(ticketsClass.getTickets());
   } catch (e) {
-    raise(e);
+    console.log(e);
   }
 }
 
 renderTickets();
 
-async function openNotificationHandler(){
-  try {
-    renderer.renderModal("We found some tickets for you..","tickets, tickets,tickets")
-  } catch (e) {
-    console.log(e)
-}
+function openNotificationHandler() {
+  renderer.renderModal(
+    "We found some tickets for you..",
+    "tickets, tickets,tickets"
+  );
 }
 
-$("#notification-btn").on("click",openNotificationHandler );
+async function showTicketsHandler(el) {
+  const id = $(el).attr("id");
+  try {
+    await ticketsClass.loadTickets();
+    const tickets_data = renderer.getTickets();
+    renderer.renderTemplateModal(tickets, tickets_data);
+  } catch (e) {}
+}
+
+$("#notification-btn").on("click", openNotificationHandler);
+$("#events-container").on("click", ".event-body", ({ target }) =>
+  showTicketsHandler(target)
+);
+
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);
