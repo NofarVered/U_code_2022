@@ -8,12 +8,12 @@ router = APIRouter()
 # get tickets by user's input - category and tags.
 # we will return all the tickets by the parameters above.
 
+
 @router.get("/tickets/", status_code=200)
-def get_tickets_by_input(category: str = "", tags: str = ""):
+def get_tickets_by_event(event_id: str):
     try:
-        tag_list = parse_str_tags_to_list(tags)
-        validate_category(category)
-        raw_tickets = db_manager.get_tickets_by(category, tag_list)
+        event_id = int(event_id)
+        raw_tickets = db_manager.get_tickets_by_event(event_id)
         tickets = {"tickets": [Ticket(ticket) for ticket in raw_tickets]}
         return tickets
 

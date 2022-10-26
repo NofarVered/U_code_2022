@@ -1,11 +1,8 @@
-
 class Ticket:
     def __init__(self, ticket_object) -> None:
         self.ticket_id = ticket_object["ticket_id"]
-        self.title = ticket_object["title"]
+        self.user_id = ticket_object["user_id"]
         self.price = ticket_object["price"]
-        self.location = ticket_object["location"]
         self.ticket_img = ticket_object["ticket_img"]
-        self.category_id = ticket_object["category_id"]
-        self.date = ticket_object["date"]
-        self.tags = ticket_object["tags"]
+        self.event_id = ticket_object["event_id"]
+        self.seat = ticket_object["seat"]

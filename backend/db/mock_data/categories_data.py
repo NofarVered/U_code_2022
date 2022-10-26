@@ -1,1 +1,1 @@
-categories_data =["music","sport","dance","cinema","theater","festival"]
+categories_data =["music", "sport", "dance", "cinema", "theater", "festival"]

@@ -1,12 +1,16 @@
-SELECT_ALL_TICKETS = "SELECT *\
-                      FROM Ticket\
+SELECT_ALL_EVENTS = "SELECT *\
+                      FROM Event\
                       ORDER BY date DESC;"
-SELECT_TICKETS_BY_CATEGORY = "SELECT *\
-                            FROM Ticket\
+SELECT_EVENTS_BY_CATEGORY = "SELECT *\
+                            FROM Event\
                             WHERE category_id = (SELECT category_id\
                                                 FROM Category\
                                                 WHERE name = '{category_name}')\
                             ORDER BY date DESC;"
-SELECT_TICKETS_BY_TAGS = ""
-SELECT_TICKETS_BY_CATEGORY_AND_TAGS = ""
-SELECT_TAGS_BY_TICKET_ID = "SELECT word FROM Ticket AS t,Ticket_tag AS tg WHERE t.ticket_id = tg.ticket_id AND tg.ticket_id='{id}'"
+SELECT_EVENTS_BY_TAGS = ""
+SELECT_EVENTS_BY_CATEGORY_AND_TAGS = ""
+
+
+SELECT_TICKET_BY_EVENT = "SELECT *\
+                        FROM Ticket\
+                        WHERE event_id = {event_id};"
