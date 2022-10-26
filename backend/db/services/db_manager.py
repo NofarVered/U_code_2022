@@ -46,13 +46,19 @@ class DB_Manager:
 
     def get_tickets_by(self, category, tags):
         if category and tags:
-            return self.execute_select(SELECT_TICKETS_BY_CATEGORY_AND_TAGS)
+            tickets = self.execute_select(SELECT_TICKETS_BY_CATEGORY_AND_TAGS)
         elif category:
-            return self.execute_select(SELECT_TICKETS_BY_CATEGORY.format(category_name=category))
+            tickets = self.execute_select(SELECT_TICKETS_BY_CATEGORY.format(category_name=category))
         elif tags:
-            return self.execute_select(SELECT_TICKETS_BY_TAGS)
+            tickets = self.execute_select(SELECT_TICKETS_BY_TAGS)
         else:
-            return self.execute_select(SELECT_ALL_TICKETS)
+            tickets = self.execute_select(SELECT_ALL_TICKETS)
+
+        for ticket in tickets:
+            tags = self.execute_select(SELECT_TAGS_BY_TICKET_ID.format(id=ticket["ticket_id"]))
+            ticket["tags"] = tags
+        
+        return tickets 
 
 
 db_manager = DB_Manager(HOST, USER, PWD, DB_NAME)
