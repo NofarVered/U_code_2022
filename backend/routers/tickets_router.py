@@ -1,9 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-# from ..db.load_dat
-# from
-from ..utils.helper_server_model import *
-from ..utils.ticket import Ticket
+from utils import *
+from db import db_manager
 
 router = APIRouter()
 
