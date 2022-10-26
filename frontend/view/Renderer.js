@@ -1,9 +1,9 @@
 class Renderer {
 
-  renderTickets(containerId,templateId,data) {
+  render(containerId,templateId,data) {
     const container = $('#'+containerId);
     container.empty();
-    let newEl = this.createTemplateEl(templateId, { data });
+    let newEl = this.createTemplateEl(templateId, data );
     container.append(newEl);
   }
 
@@ -22,7 +22,7 @@ class Renderer {
     let newTemplateEl = this.createTemplateEl(templateId, data);
     this.renderModal(title,newTemplateEl);
   };
-  
+
   removeModal() {
     const container = $("#demo-modal");
     container.css("display", "none");

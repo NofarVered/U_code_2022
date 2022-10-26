@@ -1,16 +1,14 @@
 const renderer = new Renderer();
-const ticketsClass = new Model();
+const model = new Model();
 
-async function renderTickets() {
+async function renderEvents() {
   try {
-    await ticketsClass.loadTickets();
-    renderer.render(ticketsClass.getTickets());
+    await model.loadEvents('','');
+    renderer.render("events-container", "event-template", {"events": model.getEvents()});
   } catch (e) {
     console.log(e);
   }
 }
-
-renderTickets();
 
 function openNotificationHandler() {
   renderer.renderModal(
@@ -20,17 +18,21 @@ function openNotificationHandler() {
 }
 
 async function showTicketsHandler(el) {
-  const id = $(el).attr("id");
+  const id = $(el).closest(".event-body").attr("id");
   try {
-    await ticketsClass.loadTickets();
-    const tickets_data = renderer.getTickets();
-    renderer.renderTemplateModal(tickets, tickets_data);
-  } catch (e) {}
+    await model.loadTickets(id);
+    const tickets_data = model.getTickets();
+    renderer.renderTemplateModal("tickets", "ticket-template", {"tickets": tickets_data});
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 $("#notification-btn").on("click", openNotificationHandler);
 $("#events-container").on("click", ".event-body", ({ target }) =>
   showTicketsHandler(target)
 );
-
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);
+
+
+renderEvents();

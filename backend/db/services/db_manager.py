@@ -1,3 +1,4 @@
+from asyncio import events
 import pymysql
 from .consts import *
 from ..queries.insert_queries import *
@@ -49,13 +50,16 @@ class DB_Manager:
 
     def get_events_by(self, category, tags):
         if category and tags:
-            return self.execute_select(SELECT_EVENTS_BY_CATEGORY_AND_TAGS)
+            events = self.execute_select(SELECT_EVENTS_BY_CATEGORY_AND_TAGS)
         elif category:
-            return self.execute_select(SELECT_EVENTS_BY_CATEGORY.format(category_name=category))
+            events = self.execute_select(SELECT_EVENTS_BY_CATEGORY.format(category_name=category))
         elif tags:
-            return self.execute_select(SELECT_EVENTS_BY_TAGS)
+            events = self.execute_select(SELECT_EVENTS_BY_TAGS)
         else:
-            return self.execute_select(SELECT_ALL_EVENTS)
-
-
+            events = self.execute_select(SELECT_ALL_EVENTS)
+        for event in events:
+            tags = self.execute_select(SELECT_TAGS_BY_EVENT_ID.format(event_id=event["event_id"]))
+            event["tags"] = tags
+        return events
+        
 db_manager = DB_Manager(HOST, USER, PWD, DB_NAME)
