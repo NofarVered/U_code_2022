@@ -1,5 +1,5 @@
 const renderer = new Renderer();
-const ticketsClass = new TicketsModel();
+const ticketsClass = new Model();
 
 async function renderTickets() {
   try {
