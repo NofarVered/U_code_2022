@@ -8,7 +8,6 @@ router = APIRouter()
 # get tickets by user's input - category and tags.
 # we will return all the tickets by the parameters above.
 
-
 @router.get("/tickets/", status_code=200)
 def get_tickets_by_input(category: str = "", tags: str = ""):
     try:
