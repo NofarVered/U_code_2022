@@ -12,11 +12,16 @@ async function renderEvents() {
   }
 }
 
-function openNotificationHandler() {
-  renderer.renderModal(
-    "We found some tickets for you..",
-    "tickets, tickets,tickets"
-  );
+async function openNotificationHandler() {
+    try {
+    await model.loadEvents("music", "");
+      renderer.renderTemplateModal("events", "event-template", {
+        events: model.getEvents(),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
 }
 
 async function getEventsByUser() {
@@ -44,11 +49,29 @@ async function showTicketsHandler(el) {
   }
 }
 
+function addWishHandler() {
+  renderer.renderTemplateModal(
+    "Couldn't find what you where looking for?",
+    "wish-form-template",
+    {}
+  );
+}
+
+function sendWishHandler() {
+  renderer.removeModal();
+  renderer.renderModal(
+    "Thank you!",
+    "We will let you knon when we have tickets for you!"
+  );
+}
+
 $("#btn-search").on("click", getEventsByUser);
 $("#notification-btn").on("click", openNotificationHandler);
 $("#events-container").on("click", ".event-body", ({ target }) =>
   showTicketsHandler(target)
 );
+$("#events-container").on("click", "#wish-btn", addWishHandler);
+$("#demo-modal").on("click", ".send-wish-btn", sendWishHandler);
 $("#demo-modal").on("click", ".close-btn", renderer.removeModal);
 
 renderEvents();

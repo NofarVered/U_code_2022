@@ -34,7 +34,7 @@
       <div class="container" style="margin:0">
         <a href="#" class="navbar-brand">
           <span class="font-weight-bold" style="font-size: 20px"
-            >T <i class="fa-solid fa-cat"></i> ch</span
+            >T <i class="fa-solid fa-cat"></i>ch</span
           >
         </a>
         <button
@@ -238,6 +238,7 @@
              No seat
             </p>
             {{/if}}
+            <p>By {{seller}}</p>
             <div style="display: flex; justify-content: flex-end;font-size: 20px;"><button
                 class="btn bg-yellow ticket-price"
               > BUY {{price}} $</button></div>
@@ -250,6 +251,24 @@
         <h1>{{title}}</h1>
         <div>{{{content}}}</div>
         <button class="close-btn">x</button>
+      </div>
+    </script>
+    <script id="make-a-wish-template" type="text/x-handlebars-template">
+      <div id="wish-container">
+        <button id="wish-btn">Make a wish</button>
+      </div>
+    </script>
+    <script id="wish-form-template" type="text/x-handlebars-template">
+      <div id="wish-form-container">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your search words"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          id="input-search-wish"
+        />
+        <button class="send-wish-btn">Send wish</button>
       </div>
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>

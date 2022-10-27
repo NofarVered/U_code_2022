@@ -4,7 +4,9 @@ class Renderer {
     const container = $('#'+containerId);
     container.empty();
     let newEl = this.createTemplateEl(templateId, data );
+    let newWishBtnEl = this.createTemplateEl("make-a-wish-template",{});
     container.append(newEl);
+    container.append(newWishBtnEl);
   }
 
   renderModal(title, content) {
