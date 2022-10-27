@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Event(
     event_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(50),
     location VARCHAR(30),
-    event_img VARCHAR(50),
+    event_img VARCHAR(300),
     category_id INT REFERENCES Category(category_id),
     date Date NOT NULL 
 );
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Ticket(
     ticket_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id INT REFERENCES User(user_id),
     price INT,
-    ticket_img VARCHAR(50),
+    ticket_img VARCHAR(100),
     event_id INT REFERENCES Event(event_id),
     seat VARCHAR(30)
 );
@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS User_wish(
 );
 
 
-CREATE OR REPLACE VIEW Temp_event as
-SELECT DISTINCT e.event_id
-FROM Event AS e, Event_tag AS et
-WHERE (e.event_id = et.event_id) AND (et.word IN ("Bon", "coldplay")); 
+-- CREATE OR REPLACE VIEW Temp_event as
+-- SELECT DISTINCT e.event_id
+-- FROM Event AS e, Event_tag AS et
+-- WHERE (e.event_id = et.event_id) AND (et.word IN ("Bon", "coldplay")); 
 
 -- SELECT *
 -- FROM Event, (SELECT DISTINCT e.event_id

@@ -64,7 +64,7 @@ class DB_Manager:
             events = self.execute_list_queries([CREATE_VIEW_EVENT_BY_CATEGORY.format(category=category),
                                                 CREATE_VIEW_EVENT_BY_TAGS.format(tags=tags_str), SELECT_EVENTS_BY_CATEGORY_AND_TAG])
         elif category:
-            events = self.connection(
+            events = self.execute_select(
                 SELECT_EVENTS_BY_CATEGORY.format(category_name=category))
         elif tags:
             tags_str = str(tags)[1:-1]

@@ -19,22 +19,17 @@ function openNotificationHandler() {
   );
 }
 
-async function openNotificationHandler() {
-  try {
-    renderer.renderModal(
-      "We found some tickets for you..",
-      "tickets, tickets,tickets"
-    );
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 async function getEventsByUser() {
   let category = $("#select-form option:selected").text();
+  if (category === "Select Category") {
+    category = "";
+  }
   let textInput = $("#input-search").val();
-  let tagsArray = textInput.split(" ");
-  for (tag of tagsArray) console.log(tag, category);
+  let tagsArray = textInput.split(" ").join("%20");
+  await model.loadEvents(category, tagsArray);
+  renderer.render("events-container", "event-template", {
+    events: model.getEvents(),
+  });
 }
 async function showTicketsHandler(el) {
   const id = $(el).closest(".event-body").attr("id");

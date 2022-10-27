@@ -22,6 +22,8 @@ CREATE_VIEW_TEMP_EVENT = "CREATE OR REPLACE VIEW Temp_event AS\
     FROM Event AS e, Event_tag AS et\
     WHERE (e.event_id = et.event_id) AND (et.word IN ({tags}));"
 
+DROP_VIEW_TEMP_EVENT = "DROP TABLE Temp_event;"
+
 SELECT_EVENTS_BY_TAG = "SELECT *\
     FROM Event, Temp_event\
     WHERE Event.event_id = Temp_event.event_id;"
@@ -33,10 +35,15 @@ CREATE_VIEW_EVENT_BY_CATEGORY = "CREATE OR REPLACE VIEW temp_events_by_category 
                                                         FROM Category\
                                                         WHERE Category.name = '{category}');"
 
+DROP_VIEW_EVENT_BY_CATEGORY = "DROP TABLE temp_events_by_category;"
+
 CREATE_VIEW_EVENT_BY_TAGS = "CREATE OR REPLACE VIEW temp_events_by_tags AS\
                             SELECT DISTINCT e.event_id\
                             FROM temp_events_by_category AS e, Event_tag AS et\
                             WHERE (e.event_id = et.event_id) AND (et.word IN ({tags}));"
+
+DROP_VIEW_EVENT_BY_TAGS = "DROP TABLE temp_events_by_tags;"
+
 
 SELECT_EVENTS_BY_CATEGORY_AND_TAG = "SELECT *\
                                     FROM Event, temp_events_by_tags\
