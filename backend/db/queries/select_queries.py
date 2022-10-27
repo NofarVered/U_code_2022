@@ -17,15 +17,30 @@ SELECT_EVENTS_BY_TAG = "SELECT *\
                                             WHERE word = '{word}')\
                         ORDER BY date DESC;"
 
+CREATE_VIEW_TEMP_EVENT = "CREATE OR REPLACE VIEW Temp_event AS\
+    SELECT DISTINCT e.event_id\
+    FROM Event AS e, Event_tag AS et\
+    WHERE (e.event_id = et.event_id) AND (et.word IN ({tags}));"
+
+SELECT_EVENTS_BY_TAG = "SELECT *\
+    FROM Event, Temp_event\
+    WHERE Event.event_id = Temp_event.event_id;"
+
+CREATE_VIEW_EVENT_BY_CATEGORY = "CREATE OR REPLACE VIEW temp_events_by_category AS\
+                            SELECT *\
+                            FROM Event\
+                            WHERE Event.category_id = (SELECT category_id\
+                                                        FROM Category\
+                                                        WHERE Category.name = '{category}');"
+
+CREATE_VIEW_EVENT_BY_TAGS = "CREATE OR REPLACE VIEW temp_events_by_tags AS\
+                            SELECT DISTINCT e.event_id\
+                            FROM temp_events_by_category AS e, Event_tag AS et\
+                            WHERE (e.event_id = et.event_id) AND (et.word IN ({tags}));"
+
 SELECT_EVENTS_BY_CATEGORY_AND_TAG = "SELECT *\
-                                    FROM Event\
-                                    WHERE event_id = (SELECT event_id\
-                                                    FROM event_tag\
-                                                    WHERE word = '{word}')\
-                                    AND category_id = (SELECT category_id\
-                                                FROM Category\
-                                                WHERE name = '{category_name}')\
-                                    ORDER BY date DESC;"
+                                    FROM Event, temp_events_by_tags\
+                                    WHERE Event.event_id = temp_events_by_tags.event_id;"
 
 SELECT_TAGS_BY_EVENT_ID = "SELECT word\
                         FROM Event_tag AS et, Event AS e\

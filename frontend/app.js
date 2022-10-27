@@ -34,7 +34,7 @@ async function getEventsByUser() {
   let category = $("#select-form option:selected").text();
   let textInput = $("#input-search").val();
   let tagsArray = textInput.split(" ");
-  // for (tag of tagsArray) console.log(tag);
+  for (tag of tagsArray) console.log(tag, category);
 }
 async function showTicketsHandler(el) {
   const id = $(el).closest(".event-body").attr("id");

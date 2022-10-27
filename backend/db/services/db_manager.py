@@ -34,28 +34,42 @@ class DB_Manager:
         except Exception as e:
             print(e)
 
-    def create_tables(self):
-        with open('backend\db\create_tables_queries.sql', 'r') as f:
-            sqlFile = f.read()
-        sqlCommands = sqlFile.split(';')
-        with self.connection.cursor() as cursor:
-            for command in sqlCommands:
-                try:
-                    cursor.execute(command)
-                except Exception as e:
-                    pass
+    def execute_list_queries(self, queries):
+        try:
+            with self.connection.cursor() as cursor:
+                for query in queries:
+                    cursor.execute(query)
+                result = cursor.fetchall()
+                return result
+        except Exception as e:
+            print(e)
+
+    # def create_tables(self):
+    #     with open('backend\db\create_tables_queries.sql', 'r') as f:
+    #         sqlFile = f.read()
+    #     sqlCommands = sqlFile.split(';')
+    #     with self.connection.cursor() as cursor:
+    #         for command in sqlCommands:
+    #             try:
+    #                 cursor.execute(command)
+    #             except Exception as e:
+    #                 pass
 
     def get_tickets_by_event(self, event_id):
         return self.execute_select(SELECT_TICKET_BY_EVENT.format(event_id=event_id))
 
     def get_events_by(self, category, tags):
         if category and tags:
-            events = self.execute_select(SELECT_EVENTS_BY_CATEGORY_AND_TAG)
+            tags_str = str(tags)[1:-1]
+            events = self.execute_list_queries([CREATE_VIEW_EVENT_BY_CATEGORY.format(category=category),
+                                                CREATE_VIEW_EVENT_BY_TAGS.format(tags=tags_str), SELECT_EVENTS_BY_CATEGORY_AND_TAG])
         elif category:
-            events = self.execute_select(
+            events = self.connection(
                 SELECT_EVENTS_BY_CATEGORY.format(category_name=category))
         elif tags:
-            events = self.execute_select(SELECT_EVENTS_BY_TAG)
+            tags_str = str(tags)[1:-1]
+            events = self.execute_list_queries([CREATE_VIEW_TEMP_EVENT.format(tags=tags_str),
+                                               SELECT_EVENTS_BY_TAG])
         else:
             events = self.execute_select(SELECT_ALL_EVENTS)
         for event in events:

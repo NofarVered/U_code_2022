@@ -61,3 +61,13 @@ CREATE TABLE IF NOT EXISTS User_wish(
 );
 
 
+CREATE OR REPLACE VIEW Temp_event as
+SELECT DISTINCT e.event_id
+FROM Event AS e, Event_tag AS et
+WHERE (e.event_id = et.event_id) AND (et.word IN ("Bon", "coldplay")); 
+
+-- SELECT *
+-- FROM Event, (SELECT DISTINCT e.event_id
+-- FROM Event AS e, Event_tag AS et
+-- WHERE (e.event_id = et.event_id) AND (et.word IN ("Bon", "coldplay"))) As Temp_event
+-- WHERE Event.event_id = Temp_event.event_id;

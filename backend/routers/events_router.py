@@ -6,7 +6,6 @@ from db import db_manager
 router = APIRouter()
 
 
-
 @router.get("/events/", status_code=200)
 def get_events_by_input(category: str = "", tags: str = ""):
     try:
