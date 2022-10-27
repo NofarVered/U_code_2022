@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arena Tickets</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -28,9 +31,9 @@
 
   <body>
     <header class="navbar navbar-expand-lg navbar-dark shadow-sm">
-      <div class="container">
+      <div class="container" style="margin:0">
         <a href="#" class="navbar-brand">
-          <span class="font-weight-bold" style="font-size: 30px"
+          <span class="font-weight-bold" style="font-size: 20px"
             >T <i class="fa-solid fa-cat"></i> ch</span
           >
         </a>
@@ -41,7 +44,12 @@
           aria-controls="navbarSupportedContent"
           class="navbar-toggler"
         >
-          <i class="fa-regular fa-bell animated bounce"  data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="tada"></i>
+          <i
+            class="fa-regular fa-bell animated tada"
+            data-mdb-toggle="animation"
+            data-mdb-animation-reset="true"
+            data-mdb-animation="tada"
+          ></i>
         </button>
       </div>
     </header>
@@ -164,13 +172,27 @@
         </li>
       </ul>
     </nav>
+    <div class="area" >
+      <ul class="circles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+      </ul>
+</div >
     <div id="demo-modal" class="modal"></div>
 
     <!-- ================================== TEMPLATES SCRIPTS ================================== -->
     <script id="event-template" type="text/x-handlebars-template">
       {{#each events}}
         <div
-          class="card event-body animated slideInDown"
+          class="card event-body animated fadeInDown"
           id="{{event_id}}"
           style="margin-bottom: 10px;"
         >
@@ -180,15 +202,20 @@
             {{/each}}
           </div>
           <div class="card-body">
+            <div class="info-event">
             <h5 class="card-title event-title">{{title}}</h5>
             <p class="event-place" style="margin-bottom: 2px;"><i
                 class="fa-solid fa-location-crosshairs"
               ></i>
-              {{location}}
+                {{location}}
             </p>
-            <p class="event-sites"><i class="fa-solid fa-couch"></i>
-              {{date}}
+            <p class="event-sites"><i class="fa-regular fa-calendar"></i>  
+                {{date}}
             </p>
+          </div>
+            <div class="img-container">
+              <img src="https://www.greenqueen.com.hk/wp-content/uploads/2021/10/Coldplay-Goes-Climate-Positive-For-2022-Music-Of-The-Spheres-World-Tour.jpg" alt="{{title}}" />
+            </div>
           </div>
         </div>
       {{/each}}
@@ -196,16 +223,22 @@
     <script id="ticket-template" type="text/x-handlebars-template">
       {{#each tickets}}
         <div
-          class="card ticket-body animated slideInDown"
+          class="card ticket-body "
           id="{{ticket_id}}"
           style="margin-bottom: 10px;"
         >
-          <div class="card-body">
+          <div class="card-body ticket-card">
             <h5 class="card-title ticket-title">{{title}}</h5>
+            {{#if seat}}
             <p class="ticket-sites"><i class="fa-solid fa-couch"></i>
               {{seat}}
             </p>
-            <div style="display: flex; justify-content: flex-end;"><button
+            {{else}}
+            <p class="ticket-sites"><i class="fa-solid fa-couch"></i>
+             No seat
+            </p>
+            {{/if}}
+            <div style="display: flex; justify-content: flex-end;font-size: 20px;"><button
                 class="btn bg-yellow ticket-price"
               > BUY {{price}} $</button></div>
           </div>
@@ -213,7 +246,7 @@
       {{/each}}
     </script>
     <script id="modal-template" type="text/x-handlebars-template">
-      <div class="modal__content">
+      <div class="modal__content" >
         <h1>{{title}}</h1>
         <div>{{{content}}}</div>
         <button class="close-btn">x</button>

@@ -20,3 +20,4 @@ def load_all_data(db_manager: DB_Manager):
         db_manager.execute_insert(INSERT_INTO_TICKET, list(record.values()))
     for record in event_tag_data:
         db_manager.execute_insert(INSERT_INTO_EVENT_TAG, list(record.values()))
+
