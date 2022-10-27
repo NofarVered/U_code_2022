@@ -22,7 +22,7 @@ async function showTicketsHandler(el) {
   try {
     await model.loadTickets(id);
     const tickets_data = model.getTickets();
-    renderer.renderTemplateModal("tickets", "ticket-template", {"tickets": tickets_data});
+    renderer.renderTemplateModal("", "ticket-template", {"tickets": tickets_data});
   } catch (e) {
     console.log(e)
   }
